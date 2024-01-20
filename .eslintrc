@@ -14,7 +14,7 @@
     "rules": {
         "react/prop-types": "off",
         "import/no-extraneous-dependencies": "off",
-        // "plugin:react/jsx-runtime": "on",
+        "plugin:react/jsx-runtime": "off",
         "react/react-in-jsx-scope" : "off"
     }
 }

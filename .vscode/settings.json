@@ -3,5 +3,10 @@
     "[javascriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "codeium.enableConfig": {
+        "*": true,
+        "javascript": true
+    },
+    "codeium.enableCodeLens": true,
 }

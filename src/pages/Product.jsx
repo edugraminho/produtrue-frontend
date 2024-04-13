@@ -15,7 +15,9 @@ function ProductPage({ onSelectProduct }) {
 
     async function fetchData() {
       try {
-        const response = await fetch(`http://192.168.15.5:8000/${company}/${product}/${token}`);
+        const response = await fetch(
+          `http://192.168.15.5:8000/${company}/${product}/${token}`,
+        );
         const data = await response.json();
 
         if (!response.ok) {
@@ -38,8 +40,6 @@ function ProductPage({ onSelectProduct }) {
     return <Error title="An error occurred!" message={error.message} />;
   }
 
-
-  console.log(prodData);
   return (
     <Product
       title="Fetch Products"

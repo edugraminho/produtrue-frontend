@@ -6,14 +6,21 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:80"  # Mapeia a porta 80 do contêiner para a porta 3000 do host
+      - "80:80"
+    networks:
+      - produtrue_network
 
   nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"  # Mapeia a porta 80 do contêiner para a porta 80 do host
+    image: nginx
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./certs:/etc/nginx/certs:ro
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    ports:
+      - "5173:80"
     depends_on:
       - frontend
+    networks:
+      - produtrue_network
+
+networks:
+  produtrue_network:
+    driver: bridge

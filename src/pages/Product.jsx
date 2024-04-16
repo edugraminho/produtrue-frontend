@@ -16,7 +16,7 @@ function ProductPage({ onSelectProduct }) {
     async function fetchData() {
       try {
         const response = await fetch(
-          `http://192.168.15.5:8000/${company}/${product}/${token}`,
+          `http://localhost:8000/${company}/${product}/${token}`,
         );
         const data = await response.json();
 

@@ -7,18 +7,18 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
-      - "443:443"
     networks:
       - produtrue_network
 
   nginx:
     image: nginx
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
+      - ./certbot/conf:/etc/letsencrypt:rw
+      - ./certbot/www:/var/www/certbot:rw
     ports:
       - "5173:80"
+      - "443:443"
     depends_on:
       - frontend
     networks:
@@ -27,8 +27,8 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt:rw
+      - ./certbot/www:/var/www/certbot:rw
     command: certonly --webroot -w /var/www/certbot --keep-until-expiring --email edugraminho@gmail.com -d www.produtrue.online --agree-tos
     networks:
       - produtrue_network

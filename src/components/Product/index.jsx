@@ -81,6 +81,9 @@ function Product({ product }) {
             <LeftContent>Validade:</LeftContent>
             <RightContent>31/12/2030</RightContent>
 
+            <LeftContent>Visualizações:</LeftContent>
+            <RightContent>{product.views_count === null ? 0 : product.views_count}</RightContent>
+
             <LeftContent>Certificação:</LeftContent>
             <RightContent>{product.certification}</RightContent>
             <WebsiteLink
